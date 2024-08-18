@@ -4,6 +4,7 @@
     FontFamily="{DynamicResource Roboto}"
     Height="604"
     ResizeMode="NoResize"
+    Title="TRE-PB - Criador de Crachás"
     Width="856"
     WindowBackdropType="Mica"
     WindowCornerPreference="Default"
@@ -25,7 +26,7 @@
         <ui:TitleBar
             Grid.Row="0"
             ShowMaximize="False"
-            Title="CRIADOR DE CRACHÁ – TRE-PB">
+            Title="TRE-PB - Criador de Crachás">
             <ui:TitleBar.CanMaximize>False</ui:TitleBar.CanMaximize>
         </ui:TitleBar>
 
