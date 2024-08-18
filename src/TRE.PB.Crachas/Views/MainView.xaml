@@ -1,6 +1,6 @@
 ﻿<ui:FluentWindow
     ExtendsContentIntoTitleBar="True"
-    FontFamily="{DynamicResource Roboto}"
+    FontFamily="{DynamicResource Inter}"
     Height="604"
     ResizeMode="NoResize"
     Title="TRE-PB - Criador de Crachás"

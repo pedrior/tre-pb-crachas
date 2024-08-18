@@ -13,7 +13,7 @@
             </ResourceDictionary.MergedDictionaries>
 
             <!--  Default application font family  -->
-            <FontFamily x:Key="Roboto">pack://application:,,,/TRE-PB - Criador de Crachás;component/Assets/Fonts/Inter/#Inter</FontFamily>
+            <FontFamily x:Key="Inter">pack://application:,,,/TRE-PB - Criador de Crachás;component/Assets/Fonts/Inter/#Inter</FontFamily>
 
             <!--  Replace some default colors used by TextBox  -->
             <SolidColorBrush x:Key="TextControlPlaceholderForeground">#000000</SolidColorBrush>
