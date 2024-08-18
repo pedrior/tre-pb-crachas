@@ -16,7 +16,6 @@
                 Cursor="Hand"
                 Height="167"
                 MouseLeftButtonDown="BorderPhotoOnMouseLeftButtonDown"
-                ToolTip="Clique para alterar a foto"
                 Visibility="Hidden"
                 Width="134"
                 x:Name="BorderPhoto">
