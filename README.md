@@ -1,3 +1,3 @@
-# Criador de Crachá – TRE-PB
+# TRE-PB - Criador de Crachás
 
-Esta ferramenta é de uso interno do TRE-PB e foi desenvolvida para facilitar a criação de crachás pelos setores responsáveis.
+Uma ferramenta desenvolvida para facilitar a criação de crachás do TRE-PB pelos setores responsáveis.
