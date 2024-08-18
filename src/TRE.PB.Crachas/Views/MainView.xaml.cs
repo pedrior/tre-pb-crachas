@@ -36,7 +36,7 @@ public partial class MainView
 
     private bool AnyBadgeCreated => StkPnlBadgeList.Children.Count is not 0;
 
-    private void BtnNew_OnClick(object sender, RoutedEventArgs e) => ResetBadgeEditor();
+    private void BtnClean_OnClick(object sender, RoutedEventArgs e) => ResetBadgeEditor();
 
     private void BtnSave_OnClick(object sender, RoutedEventArgs e)
     {

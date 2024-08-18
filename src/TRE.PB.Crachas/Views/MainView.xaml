@@ -112,17 +112,17 @@
                         Grid.Column="0"
                         HorizontalAlignment="Left"
                         Orientation="Horizontal">
-                        <ui:Button Click="BtnNew_OnClick" Content="Novo">
+                        <ui:Button Click="BtnSave_OnClick" Content="Salvar">
                             <ui:Button.Icon>
-                                <ui:SymbolIcon Symbol="Add20" />
+                                <ui:SymbolIcon Symbol="Save20" />
                             </ui:Button.Icon>
                         </ui:Button>
                         <ui:Button
-                            Click="BtnSave_OnClick"
-                            Content="Salvar"
+                            Click="BtnClean_OnClick"
+                            Content="Limpar"
                             Margin="16,0,0,0">
                             <ui:Button.Icon>
-                                <ui:SymbolIcon Symbol="Save20" />
+                                <ui:SymbolIcon Symbol="TextClearFormatting20" />
                             </ui:Button.Icon>
                         </ui:Button>
                     </StackPanel>
