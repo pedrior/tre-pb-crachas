@@ -292,7 +292,7 @@ public partial class MainView
         var path = Path.Combine(directory, $"CRACHÁ - {name}");
 
         var i = 1;
-        while (File.Exists(path))
+        while (Path.Exists(path))
         {
             path = Path.Combine(directory, $"CRACHÁ - {name} ({i++})");
         }
