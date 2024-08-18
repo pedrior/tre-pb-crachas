@@ -1,0 +1,9 @@
+[Oo]bj/
+[Bb]in/
+.idea/
+.vs/
+.vscode/
+*.log
+*.user
+*.suo
+*.cache

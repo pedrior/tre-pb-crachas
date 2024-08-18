@@ -1,0 +1,348 @@
+﻿<UserControl
+    Background="White"
+    mc:Ignorable="d"
+    x:Class="TRE.PB.Crachas.Controls.BadgeBack"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#FFFFFF" Width="284">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border
+            BorderBrush="Black"
+            BorderThickness="1"
+            CornerRadius="4"
+            Grid.Row="0"
+            Margin="20,40,20,0"
+            RenderOptions.BitmapScalingMode="HighQuality">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="38" />
+                    <RowDefinition Height="38" />
+                    <RowDefinition Height="38" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0">
+                    <Grid>
+                        <TextBlock
+                            FontSize="8"
+                            FontWeight="SemiBold"
+                            Foreground="Black"
+                            Margin="4,2,0,0"
+                            Text="NOME:"
+                            VerticalAlignment="Top" />
+                        <ui:TextBox
+                            FontSize="13"
+                            FontWeight="Medium"
+                            MaxLength="30"
+                            PlaceholderText="NOME COMPLETO"
+                            Style="{DynamicResource AppTextBox}"
+                            TextAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            x:Name="TextBoxFullName" />
+                    </Grid>
+                </Border>
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="0,1,0,0"
+                    Grid.Row="1">
+                    <Grid>
+                        <TextBlock
+                            FontSize="8"
+                            FontWeight="SemiBold"
+                            Foreground="Black"
+                            Margin="4,2,0,0"
+                            Text="CARGO:"
+                            VerticalAlignment="Top" />
+                        <ui:TextBox
+                            FontSize="13"
+                            FontWeight="Medium"
+                            MaxLength="30"
+                            PlaceholderText="CARGO"
+                            Style="{DynamicResource AppTextBox}"
+                            TextAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            x:Name="TextBoxPosition" />
+                    </Grid>
+                </Border>
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="0,1,0,0"
+                    Grid.Row="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <TextBlock
+                                FontSize="8"
+                                FontWeight="SemiBold"
+                                Foreground="Black"
+                                Margin="4,2,0,0"
+                                Text="DATA DE NASCIMENTO:"
+                                VerticalAlignment="Top" />
+                            <ui:TextBox
+                                FontSize="13"
+                                FontWeight="Medium"
+                                Margin="0,8,0,0"
+                                MaxLength="10"
+                                PlaceholderText="01/01/1900"
+                                Style="{DynamicResource AppTextBox}"
+                                TextAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                x:Name="TextBoxBirthate" />
+                        </Grid>
+                        <Border
+                            BorderBrush="Black"
+                            BorderThickness="1,0,0,0"
+                            Grid.Column="1">
+                            <Grid>
+                                <TextBlock
+                                    FontSize="8"
+                                    FontWeight="SemiBold"
+                                    Foreground="Black"
+                                    Margin="4,2,0,0"
+                                    Text="GS/RH:"
+                                    VerticalAlignment="Top" />
+                                <ui:TextBox
+                                    FontSize="13"
+                                    FontWeight="Medium"
+                                    Margin="0,8,0,0"
+                                    MaxLength="3"
+                                    PlaceholderText="T/S"
+                                    Style="{DynamicResource AppTextBox}"
+                                    TextAlignment="Center"
+                                    VerticalAlignment="Bottom"
+                                    x:Name="TextBoxBloodType" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="0,1,0,0"
+                    Grid.Row="3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <TextBlock
+                                FontSize="8"
+                                FontWeight="SemiBold"
+                                Foreground="Black"
+                                Margin="4,2,0,0"
+                                Text="IDENTIDADE DO EXPEDIDOR:"
+                                VerticalAlignment="Top" />
+                            <ui:TextBox
+                                FontSize="13"
+                                FontWeight="Medium"
+                                Margin="0,10,0,0"
+                                MaxLength="20"
+                                PlaceholderText="00.000.000/AAAAA"
+                                Style="{DynamicResource AppTextBox}"
+                                TextAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                x:Name="TextBoxId" />
+                        </Grid>
+                        <Border
+                            BorderBrush="Black"
+                            BorderThickness="1,0,0,0"
+                            Grid.Column="1">
+                            <Grid>
+                                <TextBlock
+                                    FontSize="8"
+                                    FontWeight="SemiBold"
+                                    Foreground="Black"
+                                    Margin="4,2,0,0"
+                                    Text="DATA DE EXPED:"
+                                    VerticalAlignment="Top" />
+                                <ui:TextBox
+                                    FontSize="13"
+                                    FontWeight="Medium"
+                                    Margin="0,10,0,0"
+                                    MaxLength="10"
+                                    PlaceholderText="01/01/1900"
+                                    Style="{DynamicResource AppTextBox}"
+                                    TextAlignment="Center"
+                                    VerticalAlignment="Bottom"
+                                    x:Name="TextBoxIdDate" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="0,1,0,0"
+                    Grid.Row="4">
+                    <Grid>
+                        <TextBlock
+                            FontSize="8"
+                            FontWeight="SemiBold"
+                            Foreground="Black"
+                            Margin="4,2,0,0"
+                            Text="CPF:"
+                            VerticalAlignment="Top" />
+                        <ui:TextBox
+                            FontSize="13"
+                            FontWeight="Medium"
+                            MaxLength="14"
+                            PlaceholderText="000.000.000-00"
+                            Style="{DynamicResource AppTextBox}"
+                            TextAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            x:Name="TextBoxCpf" />
+                    </Grid>
+                </Border>
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="0,1,0,0"
+                    Grid.Row="5">
+                    <Grid>
+                        <TextBlock
+                            FontSize="8"
+                            FontWeight="SemiBold"
+                            Foreground="Black"
+                            Margin="4,2,0,0"
+                            Text="TÍTULO DE ELEITOR:"
+                            VerticalAlignment="Top" />
+                        <ui:TextBox
+                            FontSize="13"
+                            FontWeight="Medium"
+                            MaxLength="12"
+                            PlaceholderText="000000000000"
+                            Style="{DynamicResource AppTextBox}"
+                            TextAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            x:Name="TextBoxVoterId" />
+                    </Grid>
+                </Border>
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="0,1,0,0"
+                    Grid.Row="6">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <TextBlock
+                                FontSize="8"
+                                FontWeight="SemiBold"
+                                Foreground="Black"
+                                Margin="4,2,0,0"
+                                Text="ZONA:"
+                                VerticalAlignment="Top" />
+                            <ui:TextBox
+                                FontSize="13"
+                                FontWeight="Medium"
+                                MaxLength="5"
+                                PlaceholderText="000"
+                                Style="{DynamicResource AppTextBox}"
+                                TextAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                x:Name="TextBoxVoterZone" />
+                        </Grid>
+                        <Border
+                            BorderBrush="Black"
+                            BorderThickness="1,0,0,0"
+                            Grid.Column="1">
+                            <Grid>
+                                <TextBlock
+                                    FontSize="8"
+                                    FontWeight="SemiBold"
+                                    Foreground="Black"
+                                    Margin="4,2,0,0"
+                                    Text="SEÇÃO:"
+                                    VerticalAlignment="Top" />
+                                <ui:TextBox
+                                    FontSize="13"
+                                    FontWeight="Medium"
+                                    MaxLength="5"
+                                    PlaceholderText="000"
+                                    Style="{DynamicResource AppTextBox}"
+                                    TextAlignment="Center"
+                                    VerticalAlignment="Bottom"
+                                    x:Name="TextBoxVoterSection" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="7">
+                    <Border
+                        BorderBrush="Black"
+                        BorderThickness="0,1,0,0"
+                        Padding="0,8">
+                        <TextBlock
+                            Foreground="Black"
+                            LineHeight="14"
+                            LineStackingStrategy="BlockLineHeight"
+                            Margin="8,0"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap"
+                            VerticalAlignment="Center">
+                            <Run
+                                FontSize="12"
+                                FontWeight="Medium"
+                                Text="TRIBUNAL REGIONAL ELEITORAL DA PARAÍBA" />
+                            <LineBreak />
+                            <Run
+                                FontSize="9"
+                                FontWeight="Light"
+                                Text="Av. Princesa Isabel, 201 - Tambiá, João Pessoa - PB - 58020-528 (83) 3512-1200" />
+                        </TextBlock>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <StackPanel Grid.Row="1" Margin="0,4,0,0">
+            <ui:TextBox
+                FontSize="14"
+                FontWeight="Medium"
+                MaxLength="15"
+                Padding="0"
+                PlaceholderText="MATRÍCULA"
+                Style="{DynamicResource AppTextBox}"
+                TextAlignment="Center"
+                TextChanged="TxtBxEnrollmentOnTextChanged"
+                ToolTip="Clique com o botão direito para exibir ou ocultar a matrícula"
+                VerticalAlignment="Top"
+                x:Name="TextBoxEnrollment">
+
+                <ui:TextBox.ContextMenu>
+                    <ContextMenu>
+                        <ui:MenuItem Click="EnrollmentContextMenuShowHide_OnClick" Header="Exibir / Ocultar">
+                            <ui:MenuItem.Icon>
+                                <ui:SymbolIcon Symbol="SlideHide20" />
+                            </ui:MenuItem.Icon>
+                        </ui:MenuItem>
+                    </ContextMenu>
+                </ui:TextBox.ContextMenu>
+            </ui:TextBox>
+            <Image
+                MaxHeight="45"
+                MaxWidth="120"
+                RenderOptions.BitmapScalingMode="HighQuality"
+                Stretch="Fill"
+                x:Name="ImgEnrollmentBarCode" />
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,91 @@
+﻿<UserControl
+    mc:Ignorable="d"
+    x:Class="TRE.PB.Crachas.Controls.BadgeFront"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#FFFFFF" Width="284">
+        <Image Source="pack://application:,,,/TRE-PB - Criador de Crachás;component/Assets/Images/base-front.png" Stretch="Fill" />
+        <Canvas Background="Transparent">
+            <Border
+                Canvas.Left="113"
+                Canvas.Top="143"
+                CornerRadius="8"
+                Cursor="Hand"
+                Height="167"
+                MouseLeftButtonDown="BorderPhotoOnMouseLeftButtonDown"
+                ToolTip="Clique para alterar a foto"
+                Visibility="Hidden"
+                Width="134"
+                x:Name="BorderPhoto">
+
+                <Border.Background>
+                    <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" />
+                </Border.Background>
+
+                <Border.ContextMenu>
+                    <ContextMenu>
+                        <ui:MenuItem Click="ImgCtxMenuChangeImage" Header="Alterar">
+                            <ui:MenuItem.Icon>
+                                <ui:SymbolIcon Symbol="ImageAdd20" />
+                            </ui:MenuItem.Icon>
+                        </ui:MenuItem>
+                        <ui:MenuItem Header="Editar" IsEnabled="False">
+                            <ui:MenuItem.Icon>
+                                <ui:SymbolIcon Symbol="ImageEdit20" />
+                            </ui:MenuItem.Icon>
+                        </ui:MenuItem>
+                        <ui:MenuItem Click="ImgCtxMenuDeleteOnClick" Header="Remover">
+                            <ui:MenuItem.Icon>
+                                <ui:SymbolIcon Symbol="Delete20" />
+                            </ui:MenuItem.Icon>
+                        </ui:MenuItem>
+                    </ContextMenu>
+                </Border.ContextMenu>
+            </Border>
+            <ui:Button
+                Canvas.Left="115"
+                Canvas.Top="145"
+                Click="BtnAddPhotoOnClick"
+                Cursor="Hand"
+                Height="162"
+                Width="130"
+                ui:Appearance="Light"
+                x:Name="BtnAddPhoto">
+                <StackPanel>
+                    <ui:SymbolIcon FontSize="24" Symbol="ImageAdd20" />
+                    <TextBlock
+                        FontWeight="SemiBold"
+                        Margin="0,8,0,0"
+                        Text="ADICIONAR"
+                        TextAlignment="Center"
+                        TextWrapping="Wrap" />
+                </StackPanel>
+            </ui:Button>
+
+            <ui:TextBox
+                Canvas.Top="334"
+                FontSize="24"
+                FontWeight="Bold"
+                MaxLength="18"
+                PlaceholderText="NOME SOBRENOME"
+                Style="{DynamicResource AppTextBox}"
+                TextAlignment="Center"
+                Width="283"
+                x:Name="TextBoxShortName" />
+
+            <ui:TextBox
+                Canvas.Top="372"
+                FontSize="20"
+                FontWeight="Bold"
+                MaxLength="20"
+                PlaceholderText="CARGO"
+                Style="{DynamicResource AppTextBox}"
+                TextAlignment="Center"
+                Width="283"
+                x:Name="TextBoxPosition" />
+        </Canvas>
+    </Grid>
+</UserControl>
