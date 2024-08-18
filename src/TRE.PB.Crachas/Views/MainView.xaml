@@ -1,5 +1,4 @@
 ﻿<ui:FluentWindow
-    Background="#F8F8F8"
     ExtendsContentIntoTitleBar="True"
     FontFamily="{DynamicResource Roboto}"
     Height="604"
