@@ -21,23 +21,21 @@ public static class UIElementExtensions
             PixelFormats.Pbgra32);
 
         var visual = new DrawingVisual();
-        using var drawingContext = visual.RenderOpen();
-
-        var brush = new BitmapCacheBrush(element)
+        using (var context = visual.RenderOpen())
         {
-            BitmapCache = new BitmapCache
+            var brush = new BitmapCacheBrush(element)
             {
-                SnapsToDevicePixels = true
-            }
-        };
-
-        drawingContext.DrawRectangle(
-            brush,
-            null,
-            new Rect(0, 0, bitmapSource.Width, bitmapSource.Height));
-
+                BitmapCache = new BitmapCache
+                {
+                    SnapsToDevicePixels = true
+                }
+            };
+            
+            context.DrawRectangle(brush, null, new Rect(new Point(), element.RenderSize));
+        }
+        
         bitmapSource.Render(visual);
-
+        
         return EncodeToPngBitmapImage(bitmapSource);
     }
 
