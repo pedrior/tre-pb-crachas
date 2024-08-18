@@ -32,11 +32,6 @@
                                 <ui:SymbolIcon Symbol="ImageAdd20" />
                             </ui:MenuItem.Icon>
                         </ui:MenuItem>
-                        <ui:MenuItem Header="Editar" IsEnabled="False">
-                            <ui:MenuItem.Icon>
-                                <ui:SymbolIcon Symbol="ImageEdit20" />
-                            </ui:MenuItem.Icon>
-                        </ui:MenuItem>
                         <ui:MenuItem Click="ImgCtxMenuDeleteOnClick" Header="Remover">
                             <ui:MenuItem.Icon>
                                 <ui:SymbolIcon Symbol="Delete20" />
