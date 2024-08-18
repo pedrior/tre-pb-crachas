@@ -53,7 +53,7 @@
                     <TextBlock
                         FontWeight="SemiBold"
                         Margin="0,8,0,0"
-                        Text="ADICIONAR"
+                        Text="ADICIONAR FOTO 3x4"
                         TextAlignment="Center"
                         TextWrapping="Wrap" />
                 </StackPanel>
