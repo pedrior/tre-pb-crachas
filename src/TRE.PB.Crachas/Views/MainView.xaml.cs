@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -133,6 +134,8 @@ public partial class MainView
                 appearance: ControlAppearance.Success,
                 icon: new SymbolIcon(SymbolRegular.Checkmark20),
                 timeout: TimeSpan.FromSeconds(3));
+            
+            Process.Start("explorer.exe", dialog.FolderName);
         }
     }
 
