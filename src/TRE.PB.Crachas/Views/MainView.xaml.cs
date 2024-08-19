@@ -23,7 +23,7 @@ public partial class MainView
         InitializeComponent();
         snackbarService = new SnackbarService();
 
-        SnackbarPresenter.Loaded += (_, _) => 
+        SnackbarPresenter.Loaded += (_, _) =>
             snackbarService.SetSnackbarPresenter(SnackbarPresenter);
     }
 
@@ -116,17 +116,7 @@ public partial class MainView
         }
 
         var success = await SaveBadgesAsync(badges, directory: dialog.FolderName);
-        if (!success && badges.Count > 1)
-        {
-            snackbarService.Show(
-                title: "Erro ao exportar crachás",
-                message: "Ocorreu um erro ao exportar os crachás. Ainda é possível que alguns crachás tenham sido " +
-                         "exportados com sucesso. Verifique a pasta de destino.",
-                appearance: ControlAppearance.Danger,
-                icon: new SymbolIcon(SymbolRegular.ErrorCircle20),
-                timeout: TimeSpan.FromSeconds(5));
-        }
-        else if (success)
+        if (success)
         {
             snackbarService.Show(
                 title: "Crachás exportados",
@@ -134,9 +124,25 @@ public partial class MainView
                 appearance: ControlAppearance.Success,
                 icon: new SymbolIcon(SymbolRegular.Checkmark20),
                 timeout: TimeSpan.FromSeconds(3));
-            
+
             Process.Start("explorer.exe", dialog.FolderName);
+            return;
         }
+
+        var message = "Ocorreu um erro ao exportar os crachás. Verifique a pasta de destino e se você possui " +
+                      "permissão para gravar arquivos nela.";
+
+        if (badges.Count > 1)
+        {
+            message += " Ainda assim, alguns crachás podem ter sido exportados com sucesso.";
+        }
+
+        snackbarService.Show(
+            title: "Erro ao exportar crachás",
+            message: message,
+            appearance: ControlAppearance.Danger,
+            icon: new SymbolIcon(SymbolRegular.ErrorCircle20),
+            timeout: TimeSpan.FromSeconds(5));
     }
 
     private async void BtnAbout_OnClick(object sender, RoutedEventArgs e)
@@ -273,16 +279,16 @@ public partial class MainView
         front.SaveAsPng(Path.Combine(path, "FRENTE.png"));
         back.SaveAsPng(Path.Combine(path, "VERSO.png"));
     }
-    
+
     private static BitmapImage ConvertBase64StringToBitmapImage(string base64)
     {
         var bytes = Convert.FromBase64String(base64);
         var bitmap = new BitmapImage();
-        
+
         bitmap.BeginInit();
         bitmap.StreamSource = new MemoryStream(bytes);
         bitmap.EndInit();
-        
+
         return bitmap;
     }
 
@@ -299,7 +305,7 @@ public partial class MainView
         {
             path = Path.Combine(directory, $"CRACHÁ - {name} ({i++})");
         }
-        
+
         Directory.CreateDirectory(path);
 
         return path;
