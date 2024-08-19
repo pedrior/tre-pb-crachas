@@ -122,6 +122,7 @@ public partial class BadgeBack
         VoterZone = string.Empty;
         VoterSection = string.Empty;
         Enrollment = string.Empty;
+        IsEnrollmentShown = true;
         ImgEnrollmentBarCode.Source = null;
     }
 
