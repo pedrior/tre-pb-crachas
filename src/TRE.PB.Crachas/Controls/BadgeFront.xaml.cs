@@ -13,8 +13,6 @@ namespace TRE.PB.Crachas.Controls;
 
 public partial class BadgeFront
 {
-    private const double PhotoVerticalOffsetStep = 50;
-    
     private string photoPath = string.Empty;
     private double photoMaxVerticalOffset;
     
@@ -57,6 +55,8 @@ public partial class BadgeFront
         }
     }
 
+    private double PhotoVerticalOffsetStep => ImgPhoto.ActualHeight * 0.3;
+    
     private void BtnAddPhotoOnClick(object sender, RoutedEventArgs e) => SelectPhoto();
 
     private void ImgCtxMenuDeleteOnClick(object sender, RoutedEventArgs e) => RemovePhoto();
