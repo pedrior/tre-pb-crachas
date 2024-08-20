@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using TRE.PB.Crachas.Extensions;
 using Wpf.Ui.Controls;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 using TextBlock = Wpf.Ui.Controls.TextBlock;
@@ -90,10 +90,12 @@ public partial class BadgeFront
 
     private void SetPhoto(string fileName)
     {
-        var bitmapImage = new BitmapImage(new Uri(fileName));
-        BorderPhoto.Background = new ImageBrush(bitmapImage);
+        var image = new BitmapImage(new Uri(fileName));
+        const double aspectRatio = 3.2 / 4.0;
 
-        BorderPhoto.Visibility = Visibility.Visible;
+        ImgPhoto.Source = image.CropToAspectRatio(aspectRatio);
+
+        ContainerPhoto.Visibility = Visibility.Visible;
         BtnAddPhoto.Visibility = Visibility.Hidden;
 
         picturePath = fileName;
@@ -101,15 +103,15 @@ public partial class BadgeFront
 
     private void RemovePhoto()
     {
-        BorderPhoto.Background = null;
+        ImgPhoto.Source = null;
 
-        BorderPhoto.Visibility = Visibility.Hidden;
+        ContainerPhoto.Visibility = Visibility.Hidden;
         BtnAddPhoto.Visibility = Visibility.Visible;
 
         picturePath = string.Empty;
     }
 
-    private void BorderPhotoOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    private void ImgPhotoOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
         if (ShowPhotoContainerContextMenu())
         {
@@ -119,13 +121,13 @@ public partial class BadgeFront
 
     private bool ShowPhotoContainerContextMenu()
     {
-        var menu = BorderPhoto.ContextMenu;
+        var menu = ImgPhoto.ContextMenu;
         if (menu is null)
         {
             return false;
         }
 
-        menu.PlacementTarget = BorderPhoto;
+        menu.PlacementTarget = ImgPhoto;
         menu.IsOpen = true;
 
         return true;

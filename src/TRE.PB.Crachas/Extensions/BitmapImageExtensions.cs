@@ -1,4 +1,6 @@
 ﻿using System.IO;
+using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace TRE.PB.Crachas.Extensions;
@@ -23,5 +25,27 @@ public static class BitmapImageExtensions
 
         using var stream = new FileStream(path, FileMode.Create);
         encoder.Save(stream);
+    }
+    
+    public static ImageSource CropToAspectRatio(this BitmapImage image, double targetAspectRatio)
+    {
+        var width = image.PixelWidth;
+        var height = image.PixelHeight;
+        
+        var actualAspectRatio = (double)width / height;
+        if (actualAspectRatio > targetAspectRatio)
+        {
+            var newWidth = height * targetAspectRatio;
+            var crop = (width - newWidth) / 2;
+            
+            return new CroppedBitmap(image, new Int32Rect((int)crop, 0, (int)newWidth, height));
+        }
+        else
+        {
+            var newHeight = width / targetAspectRatio;
+            var crop = (height - newHeight) / 2;
+            
+            return new CroppedBitmap(image, new Int32Rect(0, (int)crop, width, (int)newHeight));
+        }
     }
 }
