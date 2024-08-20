@@ -31,6 +31,20 @@ public partial class MainView
     {
         base.OnInitialized(e);
         BadgeFront.ContentPresenter = AppDialogContentPresenter;
+        
+        BadgeFront.IsBusyChanged += (_, isBusy) =>
+        {
+            if (isBusy)
+            {
+                BadgeFront.IsEnabled = false;
+                ContainerActions.IsEnabled = false;
+            }
+            else
+            {
+                BadgeFront.IsEnabled = true;
+                ContainerActions.IsEnabled = true;
+            }
+        };
     }
 
     private bool IsInEditing => badgeBeingEditedUid is not null;

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -17,8 +19,10 @@ public partial class BadgeFront
     {
         InitializeComponent();
     }
-    
+
     public ContentPresenter? ContentPresenter { get; set; }
+    
+    public event EventHandler<bool>? IsBusyChanged;
 
     public string ShortName
     {
@@ -62,11 +66,11 @@ public partial class BadgeFront
         RemovePhoto();
     }
 
-    private async void SelectPhoto()
+    private void SelectPhoto()
     {
         var dialog = new OpenFileDialog
         {
-            Filter = "Arquivos de imagem (*.jpg, *.jpeg, *.png, *.bmp)|*.jpg;*.jpeg;*.png;*.bmp",
+            Filter = "Arquivos de imagem (*.jpg, *.jpeg, *.png, *.bmp, *.pdf)|*.jpg;*.jpeg;*.png;*.bmp;*.pdf",
             Title = "Selecionar foto"
         };
 
@@ -75,17 +79,55 @@ public partial class BadgeFront
             return;
         }
 
-        try
+        var worker = new BackgroundWorker();
+        worker.DoWork += async (_, _) =>
         {
-            SetPhoto(dialog.FileName);
-        }
-        catch (Exception exception)
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                IsBusyChanged?.Invoke(this, true);
+
+                BtnAddPhoto.Visibility = Visibility.Hidden;
+                PhotoProgressRing.Visibility = Visibility.Visible;
+            });
+
+            try
+            {
+                var filePath = dialog.FileName;
+
+                // TODO: verificar cabeçalho do arquivo para saber se é PDF
+                if (filePath.EndsWith(".pdf"))
+                {
+                    filePath = ConvertPDFToPNGImage(filePath);
+                }
+
+                Application.Current.Dispatcher.Invoke(() => SetPhoto(filePath));
+            }
+            catch (Exception exception)
+            {
+                await ShowDetailedErrorDialogAsync(
+                    "Erro ao carregar a foto",
+                    "Ocorreu um erro ao carregar a foto. Por favor, tente novamente.",
+                    exception.ToString());
+            }
+        };
+
+        worker.RunWorkerCompleted += (_, _) =>
         {
-            await ShowDetailedErrorDialogAsync(
-                "Erro ao carregar a foto",
-                "Ocorreu um erro ao carregar a foto. Por favor, tente novamente.",
-                exception.ToString());
-        }
+            IsBusyChanged?.Invoke(this, false);
+            
+            PhotoProgressRing.Visibility = Visibility.Hidden;
+        };
+
+        worker.RunWorkerAsync();
+    }
+
+    private string ConvertPDFToPNGImage(string pdfFilePath)
+    {
+        using var stream = new FileStream(pdfFilePath, FileMode.Open, FileAccess.Read);
+        var filePath = $"{Path.GetTempPath()}\\{Guid.NewGuid()}.png";
+        PDFtoImage.Conversion.SavePng(filePath, stream, Index.Start);
+
+        return filePath;
     }
 
     private void SetPhoto(string fileName)
