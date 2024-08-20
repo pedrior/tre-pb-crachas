@@ -114,6 +114,7 @@ public partial class BadgeFront
                 IsBusyChanged?.Invoke(this, true);
 
                 BtnAddPhoto.Visibility = Visibility.Hidden;
+                ImgPhoto.Visibility = Visibility.Hidden;
                 PhotoProgressRing.Visibility = Visibility.Visible;
             });
 
@@ -146,6 +147,7 @@ public partial class BadgeFront
         {
             IsBusyChanged?.Invoke(this, false);
             
+            ImgPhoto.Visibility = Visibility.Visible;
             PhotoProgressRing.Visibility = Visibility.Hidden;
         };
 
