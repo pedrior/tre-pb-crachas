@@ -330,7 +330,8 @@ public partial class MainView
         var badgeFrontData = new BadgeFrontData(
             shortName: BadgeFront.ShortName,
             position: BadgeFront.Position,
-            picturePath: BadgeFront.PicturePath);
+            picturePath: BadgeFront.PhotoFilePath,
+            pictureVerticalOffset: BadgeFront.PhotoVerticalOffset);
 
         var badgeBackData = new BadgeBackData(
             name: BadgeBack.FullName,
@@ -359,7 +360,8 @@ public partial class MainView
     {
         BadgeFront.ShortName = data.Front.ShortName;
         BadgeFront.Position = data.Front.Position;
-        BadgeFront.PicturePath = data.Front.PicturePath;
+        BadgeFront.PhotoVerticalOffset = data.Front.PictureVerticalOffset;
+        BadgeFront.PhotoFilePath = data.Front.PicturePath;
 
         BadgeBack.FullName = data.Back.Name;
         BadgeBack.Position = data.Back.Position;

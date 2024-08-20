@@ -13,8 +13,11 @@ namespace TRE.PB.Crachas.Controls;
 
 public partial class BadgeFront
 {
-    private string picturePath = string.Empty;
-
+    private const double PhotoVerticalOffsetStep = 50;
+    
+    private string photoPath = string.Empty;
+    private double photoMaxVerticalOffset;
+    
     public BadgeFront()
     {
         InitializeComponent();
@@ -36,12 +39,14 @@ public partial class BadgeFront
         set => TextBoxPosition.Text = value;
     }
 
-    public string PicturePath
+    public double PhotoVerticalOffset { get; set; }
+
+    public string PhotoFilePath
     {
-        get => picturePath;
+        get => photoPath;
         set
         {
-            picturePath = value;
+            photoPath = value;
             if (string.IsNullOrEmpty(value))
             {
                 RemovePhoto();
@@ -57,11 +62,33 @@ public partial class BadgeFront
     private void ImgCtxMenuDeleteOnClick(object sender, RoutedEventArgs e) => RemovePhoto();
 
     private void ImgCtxMenuChangeImage(object sender, RoutedEventArgs e) => SelectPhoto();
+    
+    private void ImgCtxMenuMoveUp(object sender, RoutedEventArgs e)
+    {
+        if (PhotoVerticalOffset > -photoMaxVerticalOffset)
+        {
+            PhotoVerticalOffset -= PhotoVerticalOffsetStep;
+        }
+        
+        SetPhoto(photoPath);
+    }
+
+    private void ImgCtxMenuMoveDown(object sender, RoutedEventArgs e)
+    {
+        if (PhotoVerticalOffset < photoMaxVerticalOffset)
+        {
+            PhotoVerticalOffset += PhotoVerticalOffsetStep;
+        }
+        
+        SetPhoto(photoPath);
+    }
 
     public void Clean()
     {
         TextBoxShortName.Text = string.Empty;
         TextBoxPosition.Text = string.Empty;
+        
+        PhotoVerticalOffset = 0;
 
         RemovePhoto();
     }
@@ -100,7 +127,11 @@ public partial class BadgeFront
                     filePath = ConvertPDFToPNGImage(filePath);
                 }
 
-                Application.Current.Dispatcher.Invoke(() => SetPhoto(filePath));
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    PhotoVerticalOffset = 0;
+                    SetPhoto(filePath);
+                });
             }
             catch (Exception exception)
             {
@@ -135,12 +166,14 @@ public partial class BadgeFront
         var image = new BitmapImage(new Uri(fileName));
         const double aspectRatio = 3.2 / 4.0;
 
-        ImgPhoto.Source = image.CropToAspectRatio(aspectRatio);
+        photoMaxVerticalOffset = image.GetMaximumVerticalOffset(aspectRatio);
+        
+        ImgPhoto.Source = image.CropToAspectRatio(aspectRatio, PhotoVerticalOffset);
 
         ContainerPhoto.Visibility = Visibility.Visible;
         BtnAddPhoto.Visibility = Visibility.Hidden;
-
-        picturePath = fileName;
+        
+        photoPath = fileName;
     }
 
     private void RemovePhoto()
@@ -150,7 +183,7 @@ public partial class BadgeFront
         ContainerPhoto.Visibility = Visibility.Hidden;
         BtnAddPhoto.Visibility = Visibility.Visible;
 
-        picturePath = string.Empty;
+        photoPath = string.Empty;
     }
 
     private void ImgPhotoOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

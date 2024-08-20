@@ -31,6 +31,16 @@
 
                         <Image.ContextMenu>
                             <ContextMenu>
+                                <ui:MenuItem Click="ImgCtxMenuMoveDown" Header="Mover para baixo">
+                                    <ui:MenuItem.Icon>
+                                        <ui:SymbolIcon Symbol="ArrowDown20" />
+                                    </ui:MenuItem.Icon>
+                                </ui:MenuItem>
+                                <ui:MenuItem Click="ImgCtxMenuMoveUp" Header="Mover para cima">
+                                    <ui:MenuItem.Icon>
+                                        <ui:SymbolIcon Symbol="ArrowUp20" />
+                                    </ui:MenuItem.Icon>
+                                </ui:MenuItem>
                                 <ui:MenuItem Click="ImgCtxMenuChangeImage" Header="Alterar">
                                     <ui:MenuItem.Icon>
                                         <ui:SymbolIcon Symbol="ImageAdd20" />
