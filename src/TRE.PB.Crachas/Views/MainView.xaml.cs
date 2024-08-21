@@ -290,8 +290,8 @@ public partial class MainView
         var front = ConvertBase64StringToBitmapImage(badge.FrontImageBase64);
         var back = ConvertBase64StringToBitmapImage(badge.BackImageBase64);
 
-        front.SaveAsPng(Path.Combine(path, "FRENTE.png"));
-        back.SaveAsPng(Path.Combine(path, "VERSO.png"));
+        front.SaveToPng(Path.Combine(path, "FRENTE.png"));
+        back.SaveToPng(Path.Combine(path, "VERSO.png"));
     }
 
     private static BitmapImage ConvertBase64StringToBitmapImage(string base64)
@@ -351,9 +351,9 @@ public partial class MainView
             front: badgeFrontData,
             back: badgeBackData,
             frontImageBase64: BadgeFront.GetBitmapImage()
-                .ToBase64(),
+                .ConvertToBase64String(),
             backImageBase64: BadgeBack.GetBitmapImage()
-                .ToBase64());
+                .ConvertToBase64String());
     }
 
     private void SetEditorBadgeData(BadgeData data)

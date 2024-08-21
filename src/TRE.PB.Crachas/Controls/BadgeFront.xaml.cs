@@ -168,9 +168,9 @@ public partial class BadgeFront
         var image = new BitmapImage(new Uri(fileName));
         const double aspectRatio = 3.2 / 4.0;
 
-        photoMaxVerticalOffset = image.GetMaximumVerticalOffset(aspectRatio);
+        photoMaxVerticalOffset = image.CalculateMaxVerticalOffset(aspectRatio);
         
-        ImgPhoto.Source = image.CropToAspectRatio(aspectRatio, PhotoVerticalOffset);
+        ImgPhoto.Source = image.Crop(aspectRatio, PhotoVerticalOffset);
 
         ContainerPhoto.Visibility = Visibility.Visible;
         BtnAddPhoto.Visibility = Visibility.Hidden;

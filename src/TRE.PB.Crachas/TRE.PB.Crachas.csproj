@@ -7,7 +7,7 @@
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <UseWPF>true</UseWPF>
         <LangVersion>default</LangVersion>
-        <Company>TRE-PB/SESOP - PEDRO JÚNIOR</Company>
+        <Company>TRE-PB\SESOP - Pedro Júnior</Company>
         <Product>TRE-PB - Criador de Crachás</Product>
         <AssemblyVersion>1.0.0</AssemblyVersion>
         <FileVersion>1.0.0</FileVersion>
