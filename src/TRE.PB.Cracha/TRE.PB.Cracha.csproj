@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <UseWPF>true</UseWPF>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <AssemblyName>TRE-PB - Criador de Crachás</AssemblyName>
+        <Company>TRE-PB\SESOP</Company>
+        <NeutralLanguage>pt-BR</NeutralLanguage>
+        <AssemblyVersion>1.1.0</AssemblyVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+        <PackageReference Include="NetBarcode" Version="1.7.2" />
+        <PackageReference Include="PDFtoImage" Version="4.1.0" />
+        <PackageReference Include="shortid" Version="4.0.0" />
+        <PackageReference Include="WPF-UI" Version="3.0.5"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Resource Include="Assets\Fonts\*.ttf"/>
+        <Resource Include="Assets\Images\*.png"/>
+        <Resource Include="Assets\Images\*.ico"/>
+    </ItemGroup>
+</Project>
