@@ -206,6 +206,22 @@ public sealed partial class MainViewModel(
         Badges.Clear();
         HasBadges = false;
     }
+    
+    [RelayCommand]
+    private async Task About()
+    {
+        var dialog = new ContentDialog
+        {
+            Title = "Sobre o Criador de Crachá do TRE-PB",
+            Content = "Esta ferramenta é de uso interno do TRE-PB desenvolvida para facilitar a criação de crachás " +
+                      "do TRE-PB. Dúvidas, problemas ou sugestões, entre em contato com a SESOP.",
+            CloseButtonText = "Entendi",
+            DialogHost = dialogHostProvider.Host,
+            DefaultButton = ContentDialogButton.Primary
+        };
+
+        await dialog.ShowAsync();
+    }
 
     [RelayCommand(CanExecute = nameof(HasBadges))]
     private async Task ExportAllBadges()

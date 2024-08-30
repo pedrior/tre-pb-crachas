@@ -715,7 +715,10 @@
                         Grid.Column="1"
                         HorizontalAlignment="Right"
                         Orientation="Horizontal">
-                        <ui:Button Appearance="Transparent" Content="Sobre">
+                        <ui:Button
+                            Appearance="Transparent"
+                            Command="{Binding AboutCommand}"
+                            Content="Sobre">
                             <ui:Button.Icon>
                                 <ui:SymbolIcon Symbol="Info20" />
                             </ui:Button.Icon>
