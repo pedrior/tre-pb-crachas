@@ -10,6 +10,7 @@
         <Company>TRE-PB\SESOP</Company>
         <NeutralLanguage>pt-BR</NeutralLanguage>
         <AssemblyVersion>1.1.0</AssemblyVersion>
+        <ApplicationIcon>Assets\Images\ico.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
