@@ -114,7 +114,7 @@ public sealed partial class MainViewModel(
                 CoverImage = coverImage
             };
 
-            if (editingBadgeId.HasValue)
+            if (editingBadgeId.HasValue && Badges.Any(b => b.Id == editingBadgeId.Value))
             {
                 var badgeIndex = Badges.IndexOf(Badges.First(b => b.Id == editingBadgeId));
                 Badges[badgeIndex] = badge;
